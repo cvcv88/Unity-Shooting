@@ -6,6 +6,8 @@ using UnityEngine.InputSystem;
 public class TPSCameraController : MonoBehaviour
 {
 	[SerializeField] Transform cameraRoot;
+	[SerializeField] Transform target;
+	[SerializeField] float distance;
 	[SerializeField] float mouseSensitivity;
 
 	private Vector2 inputDir;
@@ -18,6 +20,15 @@ public class TPSCameraController : MonoBehaviour
 	private void OnDisable()
 	{
 		Cursor.lockState = CursorLockMode.None;
+	}
+
+	private void Update()
+	{
+		SetTargetPos();
+	}
+	private void SetTargetPos()
+	{
+		target.position = Camera.main.transform.position + Camera.main.transform.forward * distance;
 	}
 
 	// 모든 진행상황이 진행된 후에 진행되기 때문에 플레이어의 어깨 위치 정해진 후에 행동한다.
