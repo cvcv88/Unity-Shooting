@@ -11,6 +11,7 @@ public class PlayerController : MonoBehaviour
 	// 기존과 달라진 점, 기존에는 rigidbody였음.
 	// FixedUpdate에서 rigid.AddForce(moveDir*moveSpeed)만큼 이동했었다.
 	[SerializeField] Animator animator;
+	[SerializeField] WeaponHolder weaponHolder;
 
 	[Header("Spec")]
 	[SerializeField] float moveSpeed;
@@ -94,6 +95,7 @@ public class PlayerController : MonoBehaviour
 
 	public void Fire()
 	{
+		weaponHolder.Fire();
 		// 총쏘는 로직 구현
 		animator.SetTrigger("Fire");
 	}
